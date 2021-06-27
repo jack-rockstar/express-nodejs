@@ -36,7 +36,7 @@ const puerto=process.env.PORT || 3000;
 
 //Conexion a base de datos 
 const mongoose=require('mongoose');
-
+//alaalal
 const usuario='jack_vet'
 const pass='GBsShEhe3VAY5Aay'
 const dbname='veterinaria'
