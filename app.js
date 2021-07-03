@@ -51,7 +51,7 @@ mongoose.connect(uri,
 app.set('views',__dirname + '/view');
 app.set('view engine', 'ejs')
 
-//keloke
+
 
 app.use(express.static(__dirname +'/public'));
 
