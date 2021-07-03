@@ -31,15 +31,15 @@ server.listen(puerto,()=>{
 const express=require('express')
 const app=express()
 
-//Q BUSQUE UNA VARIABLE EN PORT Y SI NO EXISTE  QUE NOS DESIGNE AL 3000s
-const puerto=process.env.PORT || 3000;
+//Q BUSQUE UN PUERTO EN HEROKU Y SI NO EXISTE  QUE NOS DESIGNE AL 3000s
+const port=process.env.PORT || 3000;
+
+require('dotenv').config()
 
 //Conexion a base de datos 
 const mongoose=require('mongoose');
-const usuario='jack_vet'
-const pass='GBsShEhe3VAY5Aay'
-const dbname='veterinaria'
-const uri=`mongodb+srv://${usuario}:${pass}@cluster0.ewv87.mongodb.net/${dbname}?retryWrites=true&w=majority`
+
+const uri=`mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.ewv87.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 
 mongoose.connect(uri,
     {useNewUrlParser:true, useUnifiedTopology:true}
@@ -80,8 +80,8 @@ app.use((req,res,next)=>{
 })
 
 
-app.listen(puerto,()=>{
-    console.log('Estamos en sus ordenes en el puerto '+puerto)
+app.listen(port,()=>{
+    console.log('Estamos en sus ordenes en el puerto '+port)
 })
 
 
