@@ -32,14 +32,14 @@ const express=require('express')
 const app=express()
 
 //Q BUSQUE UN PUERTO EN HEROKU Y SI NO EXISTE  QUE NOS DESIGNE AL 3000s
-const port=process.env.URI || 3000;
+const port=process.env.PORT || 3000;
 
 require('dotenv').config()
 
 //Conexion a base de datos 
 const mongoose=require('mongoose');
 
-
+const uri=`mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.ewv87.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 
 mongoose.connect(uri,
     {useNewUrlParser:true, useUnifiedTopology:true}
