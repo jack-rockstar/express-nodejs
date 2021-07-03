@@ -30,6 +30,7 @@ server.listen(puerto,()=>{
 //asi usamos el modulo express
 const express=require('express')
 const app=express()
+const bodyParser=require('body-parser')
 
 //Q BUSQUE UN PUERTO EN HEROKU Y SI NO EXISTE  QUE NOS DESIGNE AL 3000s
 const port=process.env.PORT || 3000;
@@ -79,7 +80,7 @@ app.use((req,res,next)=>{
         titulo:'perdimos señal',
         descripcion:'Estamooos callenndooo'
     })
-})
+}) 
 
 
 app.listen(port,()=>{
