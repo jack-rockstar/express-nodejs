@@ -32,7 +32,7 @@ const express=require('express')
 const app=express()
 
 //Q BUSQUE UN PUERTO EN HEROKU Y SI NO EXISTE  QUE NOS DESIGNE AL 3000s
-const port=process.env.PORT || 3000;
+const port=process.env.URI || 3000;
 
 require('dotenv').config()
 
