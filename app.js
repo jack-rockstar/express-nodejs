@@ -29,8 +29,13 @@ server.listen(puerto,()=>{
 
 //asi usamos el modulo express
 const express=require('express')
-const app=express()
 const bodyParser=require('body-parser')
+const app=express()
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
 //Q BUSQUE UN PUERTO EN HEROKU Y SI NO EXISTE  QUE NOS DESIGNE AL 3000s
 const port=process.env.PORT || 3000;

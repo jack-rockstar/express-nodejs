@@ -17,6 +17,27 @@ router.get('/',async (req,res)=>{
      }catch(error){
          console.log(error)
      }
+   
+router.get('/crear',(req,res)=>{
+    res.render('crear')
+})
+//
+router.post('/', async(req,res)=>{
+    const body=req.body
+    try{
+        
+        const mascotadb= new mascota(body)
+        await mascotadb.save()
+        res.redirect('/mascotas')
+    }catch(error){
+      console.log(error)
+    }
+}) 
+
+})
+
+module.exports=router;
+
 
 /*este es la forma estatica sin base de datos
     res.render("mascotas",{
@@ -26,7 +47,3 @@ router.get('/',async (req,res)=>{
             {id: '24' , nombre: 'cuates', descripcion:'232323'} 
         ]
     })*/
-})
-
-
-module.exports=router;
