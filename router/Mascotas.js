@@ -21,12 +21,11 @@ router.get('/',async (req,res)=>{
 router.get('/crear',(req,res)=>{
     res.render('crear')
 })
-//
 router.post('/', async(req,res)=>{
     const body=req.body
     try{
         
-        const mascotadb= new mascota(body)
+        let mascotadb= new mascota(body)
         await mascotadb.save()
         res.redirect('/mascotas')
     }catch(error){
@@ -35,6 +34,23 @@ router.post('/', async(req,res)=>{
 }) 
 
 })
+
+ router.get('/:id', async(req,res)=>{
+     const id=req.params.id;
+    try{
+       let mascotadb =await mascota.findOne({_id: id})
+       res.render('detalle',{
+           mascota:mascotadb,
+           error:false
+       })
+    }catch(error){
+        console.log(error)
+        res.render('detalle',{
+            error:true,
+            mensaje:'No se encuentra el id seleccionado'
+        })
+    }
+}) 
 
 module.exports=router;
 
