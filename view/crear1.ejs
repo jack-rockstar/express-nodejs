@@ -1,0 +1,13 @@
+<%- include("../template/cabeza.ejs",{tituloWeb:'Tienda'});   %>
+     <div class="container">
+         <h1>Inventario</h1>
+         <form action="/tienda" class="my-2" method="POST">
+            <input type="text" placeholder="Producto" class="form-control my-2" name="producto">
+            <input type="text" placeholder="Descripcion" class="form-control my-2" name="descripcion">
+            <input type="number" placeholder="Precio" class="form-control my-2" name="precio">
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-outline-success ">Agregar</button>
+        </div>
+        </form>
+     </div>
+<%- include("../template/footer.ejs");  %> 

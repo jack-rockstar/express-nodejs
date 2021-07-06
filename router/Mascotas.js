@@ -17,7 +17,7 @@ router.get('/',async (req,res)=>{
      }catch(error){
          console.log(error)
      }
-   
+//PARA CREAR UNA NUEVA MASCOTA
 router.get('/crear',(req,res)=>{
     res.render('crear')
 })
@@ -34,7 +34,7 @@ router.post('/', async(req,res)=>{
 }) 
 
 })
-
+//PARA LEER SOLO UN ID SELECCIONADO
  router.get('/:id', async(req,res)=>{
      const id=req.params.id;
     try{
@@ -51,6 +51,27 @@ router.post('/', async(req,res)=>{
         })
     }
 }) 
+
+
+router.delete('/:id', async(req,res)=>{
+    const id=req.params.id
+    try{
+     let mascotadb= await Mascota.findByIdAndDelete({_id: id})
+     if(mascotadb){
+      res.json({
+          estado:true,
+          mensaje:'Eliminado'
+      })
+     }else{
+      res.json({
+        estado:false,
+        mensaje:' Fallo Eliminar'
+      })
+     }
+    }catch(error){
+        console.logo('error',error)
+    }
+})
 
 module.exports=router;
 

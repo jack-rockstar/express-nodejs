@@ -4,7 +4,7 @@
         <h1>Detalle Mascota</h1>
       
         <% if (error) { %>
-            <p><%= mensaje %> </p>
+            <p><%= mensaje %></p>
             <a href="/mascotas" class="btn btn-outline-success d-grid gap-2 my-4">Volver</a>
         <% } %>
     
@@ -23,6 +23,9 @@
                         <th scope="row"><%= mascota.id %></th>
                         <td><%= mascota.nombre %> </td>
                         <td><%= mascota.descripcion %></td>
+                        <td>
+                            <button data-id="<%= mascota.id %>" id='btnEliminar' class="btn btn-outline-danger btn-sm">Eliminar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -31,3 +34,15 @@
       </div>
         
 <%- include("../template/footer.ejs");  %> 
+
+<script>
+    const btnEliminar=document.getElementById('btnEliminar')
+    btnEliminar.addEventListener('click',async()=>{
+        const id=btnEliminar.dataset.id
+        try{
+          const data=await fetch('/mascotas/id')
+        }catch(erro){
+            console.log('hola',error)
+        }
+    })
+</script>
